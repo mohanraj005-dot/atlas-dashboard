@@ -1,0 +1,28 @@
+{
+  "_format": "JSON-subset YAML, see collector/registry.yml for the convention. SYNTHETIC FIXTURE — not a real shipped template version. Used only by tests/collector/template-lock.test.mjs to exercise the MINOR branch of mergeTemplate.",
+  "version": "2.0.0",
+  "sections": {
+    "required": ["identity", "profile", "next_action"],
+    "auto_derived": ["coverage", "freshness", "phase_progress", "recent_activity"],
+    "optional_canonical": ["health", "blockers", "risks", "decisions", "open_questions", "links", "dependencies"]
+  },
+  "profiles": {
+    "code-project": {
+      "optional_defaults": ["health", "blockers", "risks"],
+      "labels": {}
+    },
+    "ops-workstream": {
+      "optional_defaults": ["blockers", "decisions"],
+      "labels": { "next_action": "Current focus" }
+    },
+    "business": {
+      "optional_defaults": ["health", "risks", "decisions"],
+      "labels": {}
+    },
+    "research": {
+      "optional_defaults": ["open_questions", "links"],
+      "labels": { "next_action": "Open question" }
+    }
+  },
+  "breaking_changes": {}
+}

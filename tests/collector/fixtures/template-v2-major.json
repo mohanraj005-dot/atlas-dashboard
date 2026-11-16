@@ -1,0 +1,32 @@
+{
+  "_format": "JSON-subset YAML, see collector/registry.yml for the convention. SYNTHETIC FIXTURE — not a real shipped template version. Used only by tests/collector/template-lock.test.mjs to exercise the MAJOR and CONFLICT branches of mergeTemplate. 'health' has moved from optional_canonical into required — a section changing category, which the merge table defines as breaking.",
+  "version": "2.0.0",
+  "sections": {
+    "required": ["identity", "profile", "next_action", "health"],
+    "auto_derived": ["coverage", "freshness", "phase_progress", "recent_activity"],
+    "optional_canonical": ["blockers", "risks", "decisions", "open_questions", "links"]
+  },
+  "profiles": {
+    "code-project": {
+      "optional_defaults": ["blockers", "risks"],
+      "labels": {}
+    },
+    "ops-workstream": {
+      "optional_defaults": ["blockers", "decisions"],
+      "labels": { "next_action": "Current focus" }
+    },
+    "business": {
+      "optional_defaults": ["risks", "decisions"],
+      "labels": {}
+    },
+    "research": {
+      "optional_defaults": ["open_questions", "links"],
+      "labels": { "next_action": "Open question" }
+    }
+  },
+  "breaking_changes": {
+    "health": {
+      "description": "health is now a required section and takes an object with status and note, not a bare string."
+    }
+  }
+}

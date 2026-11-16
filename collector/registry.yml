@@ -1,0 +1,95 @@
+{
+  "_format": "This file is JSON-subset YAML — YAML 1.2 is a strict superset of JSON, so it parses with plain JSON.parse and needs zero dependencies. Do not add real YAML syntax (anchors, multi-doc, unquoted special scalars) here. All projects below are fictional examples: replace them with your own folders.",
+  "schema_version": 1,
+  "tenant_id": "local",
+  "projects": [
+    {
+      "slug": "orchard",
+      "name": "Orchard",
+      "path": "~/projects/orchard",
+      "git_scope": "root",
+      "skip_git": false,
+      "note": "Parent repo of the nested orchard-portal entry below."
+    },
+    {
+      "slug": "kestrel",
+      "name": "Kestrel",
+      "path": "~/projects/kestrel",
+      "git_scope": "root",
+      "skip_git": false,
+      "note": "Example project with a planning directory."
+    },
+    {
+      "slug": "toolbox",
+      "name": "Toolbox",
+      "path": "~/projects/toolbox",
+      "git_scope": "root",
+      "skip_git": false,
+      "note": "Parent repo of the nested toolbox-cli entry below."
+    },
+    {
+      "slug": "toolbox-cli",
+      "name": "Toolbox CLI",
+      "path": "~/projects/toolbox/cli",
+      "git_scope": "root",
+      "skip_git": false,
+      "note": "Independent git repo nested inside the toolbox directory."
+    },
+    {
+      "slug": "meridian",
+      "name": "Meridian",
+      "path": "~/projects/meridian",
+      "git_scope": "root",
+      "skip_git": false,
+      "note": "No known nesting or scope traps."
+    },
+    {
+      "slug": "bistro-pos",
+      "name": "Bistro POS",
+      "path": "~/projects/bistro-pos",
+      "git_scope": "root",
+      "skip_git": false,
+      "note": "No known nesting or scope traps."
+    },
+    {
+      "slug": "orchard-portal",
+      "name": "Orchard Portal",
+      "path": "~/projects/orchard/portal",
+      "git_scope": "subdir",
+      "skip_git": false,
+      "note": "Lives inside the Orchard repository. git_scope is subdir so an unscoped `git log` does not report Orchard's own commits as the portal's activity; only commits that touched this subdirectory count."
+    },
+    {
+      "slug": "ledger-lab",
+      "name": "Ledger Lab",
+      "path": "~/projects/ledger-lab",
+      "git_scope": "root",
+      "skip_git": false,
+      "note": "No known nesting or scope traps."
+    },
+    {
+      "slug": "scorecard",
+      "name": "Scorecard",
+      "path": "~/projects/scorecard",
+      "git_scope": "root",
+      "skip_git": false,
+      "note": "No known nesting or scope traps."
+    },
+    {
+      "slug": "field-notes",
+      "name": "Field Notes",
+      "path": "~/Documents/field-notes",
+      "git_scope": "root",
+      "skip_git": true,
+      "note": "Path lives under ~/Documents, which macOS TCC protects from launchd-spawned processes. skip_git true forces a declared T0 registry-only render rather than a silently wrong empty git result."
+    },
+    {
+      "slug": "northwind",
+      "name": "Northwind",
+      "path": "~/projects/northwind",
+      "git_scope": "root",
+      "skip_git": false,
+      "note": "No known nesting or scope traps."
+    }
+  ]
+}

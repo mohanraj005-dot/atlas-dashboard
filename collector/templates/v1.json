@@ -1,0 +1,28 @@
+{
+  "_format": "JSON-subset YAML, see collector/registry.yml for the convention. This file is IMMUTABLE once shipped — a future template version ships as v2.json beside it and must populate breaking_changes with one entry per changed section ({description} at minimum), otherwise the merge produces an empty, useless UPGRADE-NOTES.md.",
+  "version": "1.0.0",
+  "sections": {
+    "required": ["identity", "profile", "next_action"],
+    "auto_derived": ["coverage", "freshness", "phase_progress", "recent_activity"],
+    "optional_canonical": ["health", "blockers", "risks", "decisions", "open_questions", "links"]
+  },
+  "profiles": {
+    "code-project": {
+      "optional_defaults": ["health", "blockers", "risks"],
+      "labels": {}
+    },
+    "ops-workstream": {
+      "optional_defaults": ["blockers", "decisions"],
+      "labels": { "next_action": "Current focus" }
+    },
+    "business": {
+      "optional_defaults": ["health", "risks", "decisions"],
+      "labels": {}
+    },
+    "research": {
+      "optional_defaults": ["open_questions", "links"],
+      "labels": { "next_action": "Open question" }
+    }
+  },
+  "breaking_changes": {}
+}

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  Atlas collector launch agent — template.
+
+  Placeholders (__ATLAS_HOME__, __USER_HOME__, __ATLAS_INGEST_URL__) are
+  substituted by collector/install.mjs, which writes the rendered result into
+  the user's Library/LaunchAgents directory. launchd does not expand a leading
+  tilde, so every path in the rendered file is absolute.
+
+  Scheduling honesty, stated plainly so a future reader does not file it as a
+  bug: on macOS after 10.11, a StartInterval tick that would have fired while
+  the machine was asleep is DROPPED — it is not coalesced and it is not
+  replayed later. Only StartCalendarInterval kept catch-up-on-wake semantics.
+  RunAtLoad fires when the job is loaded, which means at login or at an
+  explicit `launchctl bootstrap` — it does not fire on every wake from sleep.
+
+  The consequence is that a long sleep leaves a multi-hour gap in the run
+  history. That is expected behaviour, not a fault, and Atlas does not engineer
+  around it. The collector-health tile renders the real age of the last run, so
+  the staleness is visible and dated rather than hidden behind an assumption
+  that the timer healed itself.
+-->
+<plist version="1.0">
+<dict>
+  <key>Label</key><string>com.example.atlas.collector</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/sh</string>
+    <string>__ATLAS_HOME__/bin/run-collect.sh</string>
+  </array>
+  <key>StartInterval</key><integer>1800</integer>
+  <key>RunAtLoad</key><true/>
+  <key>StandardOutPath</key><string>__ATLAS_HOME__/logs/collector.out.log</string>
+  <key>StandardErrorPath</key><string>__ATLAS_HOME__/logs/collector.err.log</string>
+  <key>EnvironmentVariables</key>
+  <dict>
+    <!-- launchd supplies a minimal environment; git, node and security must all resolve. -->
+    <key>PATH</key><string>/opt/homebrew/bin:/usr/bin:/bin</string>
+    <key>HOME</key><string>__USER_HOME__</string>
+    <key>ATLAS_ROOT</key><string>__ATLAS_HOME__</string>
+    <key>ATLAS_INGEST_URL</key><string>__ATLAS_INGEST_URL__</string>
+  </dict>
+</dict>
+</plist>

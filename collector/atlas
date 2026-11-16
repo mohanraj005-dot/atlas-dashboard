@@ -1,0 +1,36 @@
+#!/bin/sh
+# collector/atlas — the entry point the dashboard's paste-able `atlas init
+# {slug}` command (the dashboard's INSTRUMENT column) actually runs.
+# Dispatches to atlas-init.mjs and atlas-collect.mjs, both installed
+# alongside this file in ~/.atlas/bin/ by collector/install.mjs.
+#
+# Without this shim, the dashboard would render a command that fails with
+# "command not found" — a button that does nothing, the failure
+# mode this wrapper exists to prevent.
+set -eu
+
+DIR="$(cd "$(dirname "$0")" && pwd)"
+
+# launchd- and GUI-spawned shells carry a different PATH than an interactive
+# terminal, so a missing node must be a named error, not a bare exit 127 —
+# the same guard run-collect.sh has, for the same reason.
+NODE_BIN="$(command -v node || true)"
+if [ -z "$NODE_BIN" ] || [ ! -x "$NODE_BIN" ]; then
+  printf '%s\n' "atlas: no usable node binary found on PATH=$PATH. Install Node.js and retry." >&2
+  exit 78
+fi
+
+case "${1:-}" in
+  init)
+    shift
+    exec "$NODE_BIN" "$DIR/atlas-init.mjs" init "$@"
+    ;;
+  collect)
+    shift
+    exec "$NODE_BIN" "$DIR/atlas-collect.mjs" "$@"
+    ;;
+  *)
+    printf '%s\n' "usage: atlas <init|collect> [args...]" >&2
+    exit 2
+    ;;
+esac

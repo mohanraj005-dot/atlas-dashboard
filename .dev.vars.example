@@ -1,0 +1,2 @@
+ATLAS_INGEST_HMAC_SECRET=dev-only-not-a-real-secret
+ATLAS_VIEW_PASSWORD=dev-only-not-a-real-password

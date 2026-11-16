@@ -1,0 +1,134 @@
+{
+  "schema_version": 1,
+  "tenant_id": "local",
+  "collector_version": "0.1.0",
+  "run_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+  "generated_at": "2026-08-09T06:00:00Z",
+  "ok": true,
+  "errors": [],
+  "projects": [
+    {
+      "slug": "atlas",
+      "name": "Atlas",
+      "tier": "T3",
+      "planner_version": null,
+      "parser_status": "ok",
+      "fields": [
+        {
+          "section": "identity",
+          "key": "name",
+          "value": "Atlas",
+          "confidence": "declared",
+          "source": "registry",
+          "as_of": "2026-08-09T06:00:00Z"
+        },
+        {
+          "section": "identity",
+          "key": "tier",
+          "value": "T3",
+          "confidence": "derived",
+          "source": "collector",
+          "as_of": "2026-08-09T06:00:00Z"
+        },
+        {
+          "section": "identity",
+          "key": "provenance",
+          "value": "git + .planning",
+          "confidence": "derived",
+          "source": "collector",
+          "as_of": "2026-08-09T06:00:00Z"
+        },
+        {
+          "section": "freshness",
+          "key": "last_activity",
+          "value": "2026-08-08T14:22:31-07:00",
+          "confidence": "derived",
+          "source": "git",
+          "as_of": "2026-08-08T14:22:31-07:00"
+        }
+      ]
+    },
+    {
+      "slug": "status-board",
+      "name": "Status Board",
+      "tier": "T1",
+      "planner_version": null,
+      "parser_status": "ok",
+      "fields": [
+        {
+          "section": "identity",
+          "key": "name",
+          "value": "Status Board",
+          "confidence": "declared",
+          "source": "registry",
+          "as_of": "2026-08-09T06:00:00Z"
+        },
+        {
+          "section": "identity",
+          "key": "tier",
+          "value": "T1",
+          "confidence": "derived",
+          "source": "collector",
+          "as_of": "2026-08-09T06:00:00Z"
+        },
+        {
+          "section": "identity",
+          "key": "provenance",
+          "value": "git only",
+          "confidence": "derived",
+          "source": "collector",
+          "as_of": "2026-08-09T06:00:00Z"
+        },
+        {
+          "section": "freshness",
+          "key": "last_activity",
+          "value": "2026-08-05T09:10:00-07:00",
+          "confidence": "derived",
+          "source": "git",
+          "as_of": "2026-08-05T09:10:00-07:00"
+        }
+      ]
+    },
+    {
+      "slug": "field-notes",
+      "name": "Field Notes",
+      "tier": "T0",
+      "planner_version": null,
+      "parser_status": "ok",
+      "fields": [
+        {
+          "section": "identity",
+          "key": "name",
+          "value": "Field Notes",
+          "confidence": "declared",
+          "source": "registry",
+          "as_of": "2026-08-09T06:00:00Z"
+        },
+        {
+          "section": "identity",
+          "key": "tier",
+          "value": "T0",
+          "confidence": "derived",
+          "source": "collector",
+          "as_of": "2026-08-09T06:00:00Z"
+        },
+        {
+          "section": "identity",
+          "key": "provenance",
+          "value": "registry only",
+          "confidence": "derived",
+          "source": "collector",
+          "as_of": "2026-08-09T06:00:00Z"
+        },
+        {
+          "section": "freshness",
+          "key": "last_activity",
+          "value": null,
+          "confidence": "unknown",
+          "source": "registry",
+          "as_of": "2026-08-09T06:00:00Z"
+        }
+      ]
+    }
+  ]
+}
